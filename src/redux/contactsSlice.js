@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createAction } from "@reduxjs/toolkit";
 const INITIAL_STATE = {
   items: [
     { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },

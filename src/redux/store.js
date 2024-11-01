@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { contactsReducer } from "./contactsSlice";
-import { filtersReducer } from "./filtersSlice";
+import { filterReducer } from "./filtersSlice";
 
 import {
   persistStore,
@@ -18,18 +18,12 @@ const persistConfig = {
   key: "contactsKey",
   version: 1,
   storage,
-  // blacklist: ["searchStr"],
 };
-// const persistConfigSearchFilter = {
-//   key: "filterPersistor",
-//   version: 1,
-//   storage,
-// };
 
 export const store = configureStore({
   reducer: {
     contacts: persistReducer(persistConfig, contactsReducer),
-    // searchFilter: persistReducer(persistConfigSearchFilter, filtersReducer),
+    filter: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
