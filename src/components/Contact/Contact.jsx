@@ -1,8 +1,15 @@
 import { PiPhoneFill } from "react-icons/pi";
 import { IoMdContact } from "react-icons/io";
 import s from "./Contact.module.css";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
 
-const Contact = ({ name, number, onDelete }) => {
+const Contact = ({ name, number, id }) => {
+  const dispatch = useDispatch();
+  const handleDelete = () => {
+    dispatch(deleteContact(id));
+  };
+
   return (
     <li className={s.contact}>
       <div>
@@ -15,7 +22,7 @@ const Contact = ({ name, number, onDelete }) => {
           {number}
         </p>
       </div>
-      <button onClick={onDelete}>Delete</button>
+      <button onClick={handleDelete}>Delete</button>
     </li>
   );
 };
